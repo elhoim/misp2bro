@@ -19,6 +19,9 @@ BRO_FILENAME="tmp/intel.dat"    #Name of the output file formatted for BRO.
 BRO_SENSORS="sensors.txt"    #File containing a list of IPs/Domains for your BRO sensors.
 BRO_PATH="/opt/bro/share/bro/intel/"    #Path on the remote BRO sensor where the intel file is stored.
 
+#Before anything, make sure theres a tmp folder.
+try:
+    os.makedirs("tmp")
 #Fire up the logger.
 try:
     logging.basicConfig(filename="tmp/misp2bro.log", level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -26,10 +29,6 @@ try:
 except:
     logger.error("Could not start logger.")
 
-#Before anything, make sure theres a tmp folder.
-try:
-    os.makedirs("tmp")
-    logger.info("Created tmp folder.")
 except OSError:
     if not os.path.isdir("tmp"):
         raise

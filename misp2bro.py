@@ -164,8 +164,8 @@ def makeBroFiles(root):
             #For all the events with attributes that are to be pushed to IDS, write a line in the BRO file.
             for event in events:
 
-                #We only want the events with attributes.
-                if int(event.find('attribute_count').text):
+                #Commented out since there is no such attribute for Event. If you want only events with attributes, you need to find another way to count.
+                #if int(event.find('attribute_count').text):
 
                     for attribute in event.findall('Attribute'):
 
